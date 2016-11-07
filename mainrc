@@ -1,0 +1,125 @@
+#!/usr/bin/conky -d -c
+##	.conkyrc configuration
+alignment top_right
+background yes
+border_margin 5
+border_width 5
+color0 555555			#
+color1 FCAF3E			# zolty
+#color2 64574e			# braz
+color2 20b73c
+color3 a82553			# rozowy f71f84
+color4 5e1014			# bordowy
+color5 64574e			# braz
+color6 a7a7a7			# szary
+color7 8888CC			#  (COOL)
+color8 9d9c61			# zolto-szary
+color9 888888			# niebiesko-szary
+cpu_avg_samples 2
+default_color e1e1e1		# szary a7a7a7
+default_outline_color 000000 	# Black
+default_shade_color 000000	# Black
+double_buffer yes
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades yes
+gap_x 5
+gap_y 40
+max_specials 1024
+max_user_text 10000
+maximum_width 200
+minimum_size 600
+net_avg_samples 2
+no_buffers yes
+override_utf8_locale yes
+own_window yes
+own_window_colour 000000	# Black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_type override 	## normal
+pad_percents 2			# to co nizej, miejsc po przecinku
+short_units yes			# krotka wersja podawania wielkosci dyskow np. 612.21M/3.80G
+stippled_borders 3
+text_buffer_size 8000
+total_run_times 0
+update_interval 1.0
+uppercase no
+use_spacer right
+#temperature_unit fahrenheit
+use_xft yes
+xftalpha 0.75
+xftfont sans:size=7
+# Draw graph borders
+draw_graph_borders yes
+
+# ${diskiograph /dev/sda 15,180 a7a7a7 a7a7a7}
+
+TEXT
+${color}${goto 10}${font DejaVu Sans Mono:size=44}${time %H}${font DejaVu Sans Mono:size=20}${voffset -25}:${time %M}${font DejaVu Sans Mono:size=8}${voffset -12}${time %S}
+${color}${goto 85}${voffset 10}${font :size=8}${time %A}
+${color}${goto 85}${voffset 1}${font :size=8}${time %d %B %Y}
+#${color}${font RsbillsDng:size=14}O${font}${font DejaVu Sans Mono:size=8}${execpi 3600 DJS=`date +%_d`; cal -m | sed '1d' | sed '/./!d' | sed 's/$/                     /' | fold -w 21 | sed -n '/^.\{21\}/p' | sed 's/^/${alignc} /' | sed /" $DJS "/s/" $DJS "/" "'${color2}'"$DJS"'${color}'" "/}${font}
+${voffset -20}${alignr}${font Droid Sans Mono:size=9 style=Regular}${color}${execpi 60 echo "\n  ";cal | sed '1d' | sed -e 's/'$(echo "\x5f")'/''/g' | sed -e 's/'$(echo "\x08")'/''/g' | tr '\n' 'Z' | sed -e 's/Z/\n     /g' | sed -e 's/Su/     Su/g'}
+${voffset -20}${color2}${font led:size=10}SYSTEM ${font}$hr
+${voffset 2}${color}${alignc}${nodename}
+${color}${alignc}${pre_exec cat /etc/issue.net} $machine
+${color}${alignc}$kernel
+#${color}Bateria: ${alignr}${battery_percent BAT0}% / ${acpitemp}°C
+#${color}Bateria czas pracy: ${alignr}$battery_time
+#${color}Gmail: ${alignr}${execi 60 ~/.conky/gmail.sh}
+
+${voffset -10}${color2}${font led:size=10}PROCESSOR ${font}$hr
+# "${color} in front of graph changes graph border color
+${color9}${cpugraph cpu0 20,200 bbbb00 a80000 100 -t}
+${color}Load avg: $alignr ${loadavg}
+${voffset -2}
+${color}Core 0,0:  ${cpu cpu1}% $alignr ${freq_g (1)} GHz / ${exec ~/.conky/cpu_temp.sh 1}
+${color}Core 0,1:  ${cpu cpu2}% $alignr ${freq_g (2)} GHz / ${exec ~/.conky/cpu_temp.sh 2}
+${color}Core 0,2:  ${cpu cpu3}% $alignr ${freq_g (3)} GHz / ${exec ~/.conky/cpu_temp.sh 3}
+${color}Core 0,3:  ${cpu cpu4}% $alignr ${freq_g (4)} GHz / ${exec ~/.conky/cpu_temp.sh 4}
+${color}Core 1,0:  ${cpu cpu5}% $alignr ${freq_g (5)} GHz / ${exec ~/.conky/cpu_temp.sh 5}
+${color}Core 1,1:  ${cpu cpu6}% $alignr ${freq_g (6)} GHz / ${exec ~/.conky/cpu_temp.sh 6}
+${color}Core 1,2:  ${cpu cpu7}% $alignr ${freq_g (7)} GHz / ${exec ~/.conky/cpu_temp.sh 7}
+${color}Core 1,3:  ${cpu cpu8}% $alignr ${freq_g (8)} GHz / ${exec ~/.conky/cpu_temp.sh 8}
+
+${voffset -10}${color2}${font led:size=10}PROCESSES ${font}$hr
+${voffset 2}${color}${font}NAME ${goto 90}PID${goto 120}CPU% ${alignr}MEM%
+${color}${font :size=6}${goto 9}${top name 1}${goto 85}${top pid 1}${goto 120}${top cpu 1}${goto 176}${top mem 1}
+${color}${font :size=6}${goto 9}${top name 2}${goto 85}${top pid 2}${goto 120}${top cpu 2}${goto 176}${top mem 2}
+${color}${font :size=6}${goto 9}${top name 3}${goto 85}${top pid 3}${goto 120}${top cpu 3}${goto 176}${top mem 3}
+${color}${font :size=6}${goto 9}${top name 4}${goto 85}${top pid 1}${goto 120}${top cpu 1}${goto 176}${top mem 4}
+${color}${font :size=6}${goto 9}${top name 5}${goto 85}${top pid 2}${goto 120}${top cpu 2}${goto 176}${top mem 5}
+${color}${font :size=6}${goto 9}${top name 6}${goto 85}${top pid 3}${goto 120}${top cpu 3}${goto 176}${top mem 6}
+${color}${font :size=6}${goto 9}${top name 7}${goto 85}${top pid 1}${goto 120}${top cpu 1}${goto 176}${top mem 7}
+${color}${font :size=6}${goto 9}${top name 8}${goto 85}${top pid 2}${goto 120}${top cpu 2}${goto 176}${top mem 8}
+${color}${font :size=6}${goto 9}${top name 9}${goto 85}${top pid 3}${goto 120}${top cpu 3}${goto 176}${top mem 9}
+${color}${font :size=6}${goto 9}${top name 10}${goto 85}${top pid 1}${goto 120}${top cpu 1}${goto 176}${top mem 10}
+
+${voffset -6}${color2}${font led:size=10}MEMORY / HDD ${font}$hr
+${voffset 2}${color}ram: ${mem} / ${memmax} ${alignr} ${memperc}%
+${color}swap: ${swap} / ${swapmax} ${alignr} ${swapperc}%
+${color}root: ${fs_used /} / ${fs_size /} ${alignr} ${fs_used_perc /}%
+${color}disk2: ${fs_used /disk2} / ${fs_size /home} ${alignr} ${fs_used_perc /disk2}%
+
+${voffset -10}${color2}${font led:size=10}NETWORK ${font}$hr
+${voffset 2}${color}gateway IP: ${alignr}${gw_ip}
+${color}local IP: $alignr${addr eth0}
+${color}public IP: $alignr${execi 60 ~/.conky/ipify.sh}
+${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}S${font}${color}${voffset -12}${goto 40}Down: ${downspeed eth0}kb/s ${color}
+${goto 40}Day: ${totaldown eth0}${voffset -12}${alignr}${color9}${downspeedgraph eth0 25,50 bbbb00 bbbb00}
+${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $3 $4}'}
+
+${color}${goto 10}${font pizzadude bullets:size=16}M${font}$color${voffset -12}${goto 40}Up: ${upspeed eth0}kb/s${color}
+${goto 40}Day: ${totalup eth0}${voffset -12}${alignr}${color9}${upspeedgraph eth0 25,50 bbbb00 bbbb00}
+${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $6 $7}'}
+
+${voffset -10}${color2}${font led:size=10}NVIDIA ${font}$hr
+${voffset 2}${color}GPU Temp ${alignr}${color}${nvidia temp} °C
+${color}Fan Speed ${alignr}${color}${execi 5 nvidia-settings -q [fan:0]/GPUCurrentFanSpeed -t} %
+${color}GPU Clock ${alignr}${color}${nvidia gpufreq} MHz
+${color}Mem Clock ${alignr}${color}${nvidia memfreq} MHz
+${color}Mem Used ${alignr}${color}${execi 5 nvidia-settings -q [gpu:0]/UsedDedicatedGPUMemory -t} / ${exec nvidia-settings -q [gpu:0]/TotalDedicatedGPUMemory -t} MiB
+
+${voffset -160}
+

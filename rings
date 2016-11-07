@@ -1,0 +1,75 @@
+# Conky settings #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+#imlib_cache_size 0
+
+temperature_unit fahrenheit
+
+# Window specifications #
+
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 220 250
+maximum_width 600
+
+alignment tr
+gap_x 220
+gap_y 86
+
+# Graphics settings #
+default_shade_color 000000	# Black
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+#xftfont caviar dreams:size=8
+xftfont sans:size=8
+#xftalpha 0.5
+xftalpha 0.75
+
+uppercase no
+
+temperature_unit fahrenheit
+
+default_color FFFFFF
+
+# Lua Load  #
+lua_load ~/.conky/rings.lua
+lua_draw_hook_pre clock_rings
+
+TEXT
+${voffset 270}
+${color c1c1c1}${goto 88}${voffset 30}${cpu cpu0}%
+${color 20b73c}${goto 88}CPU
+${color 20b73c}${alignc}${voffset 50}Model: ${color c1c1c1}${exec cores.sh model}
+${color 20b73c}${alignc}Physical processors: ${color c1c1c1}${exec cores.sh processors}
+${color 20b73c}${alignc}Cores: ${color c1c1c1}${exec cores.sh cores}
+${color 20b73c}${alignc}Threads (incl hyperthreading): ${color c1c1c1}${exec cores.sh threads}
+${color c1c1c1}${goto 38}${voffset 78}${memperc}%${goto 100}${swapperc}%${goto 160}${fs_used_perc /}%
+${color 20b73c}${goto 38}RAM${goto 98}Swap${goto 160}Disk
+${color c1c1c1}${goto 88}${voffset 94}${downspeed eth0}
+${color c1c1c1}${goto 88}${upspeed eth0}
+${color 20b73c}${goto 88}Net
+
+
+
+

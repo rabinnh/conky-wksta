@@ -1,0 +1,56 @@
+#!/usr/bin/conky -d -c
+
+alignment top_right
+background yes
+border_inner_margin 8
+border_width 1
+draw_borders no
+color0 e1e1e1			#
+color1 FCAF3E			# zolty
+color2 20b73c
+color3 a82553			# rozowy f71f84
+color4 5e1014			# bordowy
+color5 64574e			# braz
+color6 a7a7a7			# szary
+color7 8888CC			#  (COOL)
+color8 9d9c61			# zolto-szary
+color9 525276			# niebiesko-szary
+default_color 205520
+default_outline_color 000000 	# Black
+default_shade_color 000000	# Black
+double_buffer yes
+draw_graph_borders no
+draw_outline no
+draw_shades yes
+max_specials 1024
+max_user_text 10000
+maximum_width 600
+minimum_size 600 400
+net_avg_samples 2
+no_buffers yes
+override_utf8_locale yes
+own_window yes
+own_window_colour 000000	# Black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_type override 	## normal
+pad_percents 2			# to co nizej, miejsc po przecinku
+short_units yes			# krotka wersja podawania wielkosci dyskow np. 612.21M/3.80G
+stippled_borders 0
+text_buffer_size 8000
+total_run_times 0
+update_interval 1.0
+uppercase no
+use_spacer right
+#temperature_unit fahrenheit
+use_xft yes
+xftalpha 0.75
+xftfont sans:size=7
+
+gap_x 4
+gap_y 870
+
+TEXT
+${voffset -2}${color2}${font led:size=10}SYSLOG ${font}$hr
+${voffset 2}${color0}${execpi 2 tail -n 15 /var/log/syslog | fold -w116}
+
