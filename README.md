@@ -13,7 +13,7 @@ I have a dual socket, 8 core (4 cores per processor) system.  This script lets m
 
 ## Attributions
 ### mainrc
-Although heavily modified, this config was heavily based on the config created by didi79 (http://didi79.deviantart.com/art/conky-config-127651851).  As this is my first Conky config, I went to school on his original script and simply modified it.
+Although heavily modified, this config was based on the config created by didi79 (http://didi79.deviantart.com/art/conky-config-127651851).  As this is my first Conky config, I went to school on his original script and simply modified it.  Thanks didi79.
 
 ### rings and rings.lua
 It looks like this was originally part of the Linux Mint distro back in 2011
