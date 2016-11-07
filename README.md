@@ -1,5 +1,5 @@
 # conky-wksta
-This is my own persoanl Conky config.  Most of it is copied from other contributors and I've simply heavily modified their scripts.  If I missed any attributions, I sincerely apologize!
+This is my own personal Conky config.  Most of it is copied from other contributors and I've simply heavily modified their scripts.  If I missed any attributions, I sincerely apologize!
 
 ## Scripts
 ### cores.sh
