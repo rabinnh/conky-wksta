@@ -48,7 +48,7 @@ xftalpha 0.75
 xftfont sans:size=7
 
 gap_x 4
-gap_y 870
+gap_y 1000
 
 TEXT
 ${voffset -2}${color2}${font led:size=10}SYSLOG ${font}$hr

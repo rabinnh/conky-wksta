@@ -57,16 +57,16 @@ lua_load ~/.conky/rings.lua
 lua_draw_hook_pre clock_rings
 
 TEXT
-${voffset 270}
-${color c1c1c1}${goto 88}${voffset 30}${cpu cpu0}%
+${voffset 290}
+${color c1c1c1}${goto 88}${voffset 50}${cpu cpu0}%
 ${color 20b73c}${goto 88}CPU
-${color 20b73c}${alignc}${voffset 50}Model: ${color c1c1c1}${exec cores.sh model}
+${color 20b73c}${alignc}${voffset 30}Model: ${color c1c1c1}${exec cores.sh model}
 ${color 20b73c}${alignc}Physical processors: ${color c1c1c1}${exec cores.sh processors}
 ${color 20b73c}${alignc}Cores: ${color c1c1c1}${exec cores.sh cores}
 ${color 20b73c}${alignc}Threads (incl hyperthreading): ${color c1c1c1}${exec cores.sh threads}
-${color c1c1c1}${goto 38}${voffset 78}${memperc}%${goto 100}${swapperc}%${goto 160}${fs_used_perc /}%
+${color c1c1c1}${goto 38}${voffset 128}${memperc}%${goto 100}${swapperc}%${goto 160}${fs_used_perc /}%
 ${color 20b73c}${goto 38}RAM${goto 98}Swap${goto 160}Disk
-${color c1c1c1}${goto 88}${voffset 94}${downspeed eth0}
+${color c1c1c1}${goto 88}${voffset 104}${downspeed eth0}
 ${color c1c1c1}${goto 88}${upspeed eth0}
 ${color 20b73c}${goto 88}Net
 

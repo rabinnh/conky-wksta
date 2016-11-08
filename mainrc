@@ -60,17 +60,14 @@ ${color}${goto 10}${font DejaVu Sans Mono:size=44}${time %H}${font DejaVu Sans M
 ${color}${goto 85}${voffset 10}${font :size=8}${time %A}
 ${color}${goto 85}${voffset 1}${font :size=8}${time %d %B %Y}
 #${color}${font RsbillsDng:size=14}O${font}${font DejaVu Sans Mono:size=8}${execpi 3600 DJS=`date +%_d`; cal -m | sed '1d' | sed '/./!d' | sed 's/$/                     /' | fold -w 21 | sed -n '/^.\{21\}/p' | sed 's/^/${alignc} /' | sed /" $DJS "/s/" $DJS "/" "'${color2}'"$DJS"'${color}'" "/}${font}
-${voffset -20}${alignr}${font Droid Sans Mono:size=9 style=Regular}${color}${execpi 60 echo "\n  ";cal | sed '1d' | sed -e 's/'$(echo "\x5f")'/''/g' | sed -e 's/'$(echo "\x08")'/''/g' | tr '\n' 'Z' | sed -e 's/Z/\n     /g' | sed -e 's/Su/     Su/g'}
+${voffset -20}${alignr}${font Droid Sans Mono:size=9 style=Regular}${color}${execpi 3600 echo "\n  ";cal |sed '1d' | sed -e 's/'$(echo "\x5f")'/''/g' | sed -e 's/'$(echo "\x08")'/''/g' | tr '\n' 'Z' | sed -e 's/Z/\n     /g' | sed -e 's/Su/     Su/g'}
 ${voffset -20}${color2}${font led:size=10}SYSTEM ${font}$hr
 ${voffset 2}${color}${alignc}${nodename}
 ${color}${alignc}${pre_exec cat /etc/issue.net} $machine
 ${color}${alignc}$kernel
-#${color}Bateria: ${alignr}${battery_percent BAT0}% / ${acpitemp}°C
-#${color}Bateria czas pracy: ${alignr}$battery_time
-#${color}Gmail: ${alignr}${execi 60 ~/.conky/gmail.sh}
 
 ${voffset -10}${color2}${font led:size=10}PROCESSOR ${font}$hr
-# "${color} in front of graph changes graph border color
+# ${color} in front of graph changes graph border color
 ${color9}${cpugraph cpu0 20,200 bbbb00 a80000 100 -t}
 ${color}Load avg: $alignr ${loadavg}
 ${voffset -2}
@@ -105,7 +102,7 @@ ${color}disk2: ${fs_used /disk2} / ${fs_size /home} ${alignr} ${fs_used_perc /di
 ${voffset -10}${color2}${font led:size=10}NETWORK ${font}$hr
 ${voffset 2}${color}gateway IP: ${alignr}${gw_ip}
 ${color}local IP: $alignr${addr eth0}
-${color}public IP: $alignr${execi 60 ~/.conky/ipify.sh}
+${color}public IP: $alignr${exec ~/.conky/ipify.sh}
 ${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}S${font}${color}${voffset -12}${goto 40}Down: ${downspeed eth0}kb/s ${color}
 ${goto 40}Day: ${totaldown eth0}${voffset -12}${alignr}${color9}${downspeedgraph eth0 25,50 bbbb00 bbbb00}
 ${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $3 $4}'}
@@ -115,8 +112,11 @@ ${goto 40}Day: ${totalup eth0}${voffset -12}${alignr}${color9}${upspeedgraph eth
 ${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $6 $7}'}
 
 ${voffset -10}${color2}${font led:size=10}NVIDIA ${font}$hr
-${voffset 2}${color}GPU Temp ${alignr}${color}${nvidia temp} °C
-${color}Fan Speed ${alignr}${color}${execi 5 nvidia-settings -q [fan:0]/GPUCurrentFanSpeed -t} %
+${voffset 2}${color}Driver version ${alignr}${color}${exec nvidia-settings -q NvidiaDriverVersion -t} 
+${color}Refresh rate ${alignr}${color}${exec nvidia-settings -q RefreshRate -t}
+${color}CUDA cores ${alignr}${color}${exec nvidia-settings -q CUDACores -t}
+${color}GPU Temp ${alignr}${color}${nvidia temp} °C
+#${color}Fan Speed ${alignr}${color}${execi 5 nvidia-settings -q [fan:0]/GPUCurrentFanSpeed -t} %
 ${color}GPU Clock ${alignr}${color}${nvidia gpufreq} MHz
 ${color}Mem Clock ${alignr}${color}${nvidia memfreq} MHz
 ${color}Mem Used ${alignr}${color}${execi 5 nvidia-settings -q [gpu:0]/UsedDedicatedGPUMemory -t} / ${exec nvidia-settings -q [gpu:0]/TotalDedicatedGPUMemory -t} MiB
