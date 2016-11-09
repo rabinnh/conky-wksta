@@ -116,7 +116,7 @@ ${voffset 2}${color}Driver version ${alignr}${color}${exec nvidia-settings -q Nv
 ${color}Refresh rate ${alignr}${color}${exec nvidia-settings -q RefreshRate -t}
 ${color}CUDA cores ${alignr}${color}${exec nvidia-settings -q CUDACores -t}
 ${color}GPU Temp ${alignr}${color}${nvidia temp} °C
-#${color}Fan Speed ${alignr}${color}${execi 5 nvidia-settings -q [fan:0]/GPUCurrentFanSpeed -t} %
+${color}Fan speed ${alignr}${color}${execi 2 nvidia-settings -q [fan:0]/GPUCurrentFanSpeedRPM -t} rpm
 ${color}GPU Clock ${alignr}${color}${nvidia gpufreq} MHz
 ${color}Mem Clock ${alignr}${color}${nvidia memfreq} MHz
 ${color}Mem Used ${alignr}${color}${execi 5 nvidia-settings -q [gpu:0]/UsedDedicatedGPUMemory -t} / ${exec nvidia-settings -q [gpu:0]/TotalDedicatedGPUMemory -t} MiB
