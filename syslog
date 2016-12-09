@@ -48,9 +48,9 @@ xftalpha 0.75
 xftfont sans:size=7
 
 gap_x 4
-gap_y 1000
+gap_y 1080
 
 TEXT
 ${voffset -2}${color2}${font led:size=10}SYSLOG ${font}$hr
-${voffset 2}${color0}${execpi 2 tail -n 15 /var/log/syslog | fold -w116}
+${voffset 2}${color0}${execpi 2 tail -n 16 /var/log/syslog | fold -w108
 

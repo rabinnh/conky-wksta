@@ -65,33 +65,40 @@ ${voffset -20}${color2}${font led:size=10}SYSTEM ${font}$hr
 ${voffset 2}${color}${alignc}${nodename}
 ${color}${alignc}${pre_exec cat /etc/issue.net} $machine
 ${color}${alignc}$kernel
+${color}Sys Temp: $alignr ${execi 3 ~/.conky/systemp.sh 2}
+${color}Front fan: $alignr ${execi 3 ~/.conky/ipmifans.sh 2}
+${color}Rear fan: $alignr ${execi 3 ~/.conky/ipmifans.sh 5}
+${color}PS fan: $alignr ${execi 3 ~/.conky/ipmifans.sh 6}
+${color}CPU1 fan: $alignr ${execi 3 ~/.conky/ipmifans.sh 7}
+${color}CPU2 fan: $alignr ${execi 3 ~/.conky/ipmifans.sh 8}
 
 ${voffset -10}${color2}${font led:size=10}PROCESSOR ${font}$hr
 # ${color} in front of graph changes graph border color
 ${color9}${cpugraph cpu0 20,200 bbbb00 a80000 100 -t}
 ${color}Load avg: $alignr ${loadavg}
 ${voffset -2}
-${color}Core 0,0:  ${cpu cpu1}% $alignr ${freq_g (1)} GHz / ${exec ~/.conky/cpu_temp.sh 1}
-${color}Core 0,1:  ${cpu cpu2}% $alignr ${freq_g (2)} GHz / ${exec ~/.conky/cpu_temp.sh 2}
-${color}Core 0,2:  ${cpu cpu3}% $alignr ${freq_g (3)} GHz / ${exec ~/.conky/cpu_temp.sh 3}
-${color}Core 0,3:  ${cpu cpu4}% $alignr ${freq_g (4)} GHz / ${exec ~/.conky/cpu_temp.sh 4}
-${color}Core 1,0:  ${cpu cpu5}% $alignr ${freq_g (5)} GHz / ${exec ~/.conky/cpu_temp.sh 5}
-${color}Core 1,1:  ${cpu cpu6}% $alignr ${freq_g (6)} GHz / ${exec ~/.conky/cpu_temp.sh 6}
-${color}Core 1,2:  ${cpu cpu7}% $alignr ${freq_g (7)} GHz / ${exec ~/.conky/cpu_temp.sh 7}
-${color}Core 1,3:  ${cpu cpu8}% $alignr ${freq_g (8)} GHz / ${exec ~/.conky/cpu_temp.sh 8}
+${color}Core 0,0:  ${cpu cpu1}% $alignr ${freq_g (1)} GHz / ${execi 2 ~/.conky/cpu_temp.sh 1}
+${color}Core 0,1:  ${cpu cpu2}% $alignr ${freq_g (2)} GHz / ${execi 2 ~/.conky/cpu_temp.sh 2}
+${color}Core 0,2:  ${cpu cpu3}% $alignr ${freq_g (3)} GHz / ${execi 2 ~/.conky/cpu_temp.sh 3}
+${color}Core 0,3:  ${cpu cpu4}% $alignr ${freq_g (4)} GHz / ${execi 2 ~/.conky/cpu_temp.sh 4}
+${color}Core 1,0:  ${cpu cpu5}% $alignr ${freq_g (5)} GHz / ${execi 2 ~/.conky/cpu_temp.sh 5}
+${color}Core 1,1:  ${cpu cpu6}% $alignr ${freq_g (6)} GHz / ${execi 2 ~/.conky/cpu_temp.sh 6}
+${color}Core 1,2:  ${cpu cpu7}% $alignr ${freq_g (7)} GHz / ${execi 2 ~/.conky/cpu_temp.sh 7}
+${color}Core 1,3:  ${cpu cpu8}% $alignr ${freq_g (8)} GHz / ${execi 2 ~/.conky/cpu_temp.sh 8}
+#${color}ACPI fan:  ${platform fan 0}
 
 ${voffset -10}${color2}${font led:size=10}PROCESSES ${font}$hr
 ${voffset 2}${color}${font}NAME ${goto 90}PID${goto 120}CPU% ${alignr}MEM%
 ${color}${font :size=6}${goto 9}${top name 1}${goto 85}${top pid 1}${goto 120}${top cpu 1}${goto 176}${top mem 1}
 ${color}${font :size=6}${goto 9}${top name 2}${goto 85}${top pid 2}${goto 120}${top cpu 2}${goto 176}${top mem 2}
 ${color}${font :size=6}${goto 9}${top name 3}${goto 85}${top pid 3}${goto 120}${top cpu 3}${goto 176}${top mem 3}
-${color}${font :size=6}${goto 9}${top name 4}${goto 85}${top pid 1}${goto 120}${top cpu 1}${goto 176}${top mem 4}
-${color}${font :size=6}${goto 9}${top name 5}${goto 85}${top pid 2}${goto 120}${top cpu 2}${goto 176}${top mem 5}
-${color}${font :size=6}${goto 9}${top name 6}${goto 85}${top pid 3}${goto 120}${top cpu 3}${goto 176}${top mem 6}
-${color}${font :size=6}${goto 9}${top name 7}${goto 85}${top pid 1}${goto 120}${top cpu 1}${goto 176}${top mem 7}
-${color}${font :size=6}${goto 9}${top name 8}${goto 85}${top pid 2}${goto 120}${top cpu 2}${goto 176}${top mem 8}
-${color}${font :size=6}${goto 9}${top name 9}${goto 85}${top pid 3}${goto 120}${top cpu 3}${goto 176}${top mem 9}
-${color}${font :size=6}${goto 9}${top name 10}${goto 85}${top pid 1}${goto 120}${top cpu 1}${goto 176}${top mem 10}
+${color}${font :size=6}${goto 9}${top name 4}${goto 85}${top pid 4}${goto 120}${top cpu 4}${goto 176}${top mem 4}
+${color}${font :size=6}${goto 9}${top name 5}${goto 85}${top pid 5}${goto 120}${top cpu 5}${goto 176}${top mem 5}
+${color}${font :size=6}${goto 9}${top name 6}${goto 85}${top pid 6}${goto 120}${top cpu 6}${goto 176}${top mem 6}
+${color}${font :size=6}${goto 9}${top name 7}${goto 85}${top pid 7}${goto 120}${top cpu 7}${goto 176}${top mem 7}
+${color}${font :size=6}${goto 9}${top name 8}${goto 85}${top pid 8}${goto 120}${top cpu 8}${goto 176}${top mem 8}
+${color}${font :size=6}${goto 9}${top name 9}${goto 85}${top pid 9}${goto 120}${top cpu 9}${goto 176}${top mem 9}
+#${color}${font :size=6}${goto 9}${top name 10}${goto 85}${top pid 10}${goto 120}${top cpu 10}${goto 176}${top mem 10}
 
 ${voffset -6}${color2}${font led:size=10}MEMORY / HDD ${font}$hr
 ${voffset 2}${color}ram: ${mem} / ${memmax} ${alignr} ${memperc}%
@@ -103,13 +110,13 @@ ${voffset -10}${color2}${font led:size=10}NETWORK ${font}$hr
 ${voffset 2}${color}gateway IP: ${alignr}${gw_ip}
 ${color}local IP: $alignr${addr eth0}
 ${color}public IP: $alignr${exec ~/.conky/ipify.sh}
-${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}S${font}${color}${voffset -12}${goto 40}Down: ${downspeed eth0}kb/s ${color}
-${goto 40}Day: ${totaldown eth0}${voffset -12}${alignr}${color9}${downspeedgraph eth0 25,50 bbbb00 bbbb00}
-${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $3 $4}'}
+${voffset 5}${color}${goto 10}${font pizzadude bullets:size=16}D${font}${color}${voffset -12}${goto 40}Down: ${downspeed eth0}/s
+${color}${goto 40}Day: ${totaldown eth0}${voffset -12}${alignr}${color9}${downspeedgraph eth0 25,50 bbbb00 bbbb00}
+${voffset -13}${color}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $3 $4}'}
 
-${color}${goto 10}${font pizzadude bullets:size=16}M${font}$color${voffset -12}${goto 40}Up: ${upspeed eth0}kb/s${color}
-${goto 40}Day: ${totalup eth0}${voffset -12}${alignr}${color9}${upspeedgraph eth0 25,50 bbbb00 bbbb00}
-${voffset -13}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $6 $7}'}
+${color}${goto 10}${font pizzadude bullets:size=16}U${font}$color${voffset -12}${goto 40}Up: ${upspeed eth0}/s
+${color}${goto 40}Day: ${totalup eth0}${voffset -12}${alignr}${color9}${upspeedgraph eth0 25,50 bbbb00 bbbb00}
+${voffset -13}${color}${goto 40}Month: ${execi 300 vnstat -m | grep "`date +"'%y"`" | tail -1 | awk '{print $6 $7}'}
 
 ${voffset -10}${color2}${font led:size=10}NVIDIA ${font}$hr
 ${voffset 2}${color}Driver version ${alignr}${color}${exec nvidia-settings -q NvidiaDriverVersion -t} 
